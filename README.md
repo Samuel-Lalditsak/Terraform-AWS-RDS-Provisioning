@@ -17,7 +17,7 @@ Before using this project, ensure that you have the following prerequisites:
 Follow the steps below to provision the RDS instance:
 
 1. Clone the repository:
-git clone https://github.com/Samuel-Lalditsak/terraform-aws-rds-provisioning.git
+git clone https://github.com/Samuel-Lalditsak/terraform-aws-rds-provisioning-project.git
 cd terraform-aws-rds-provisioning
 
 2. Customize variables:
