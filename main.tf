@@ -26,50 +26,50 @@ resource "aws_rds_cluster" "default" {
   db_subnet_group_name = aws_db_subnet_group.default.name     # Name of the DB subnet group associated with the cluster
   skip_final_snapshot  = true          # Whether to skip the final snapshot when deleting the cluster
   vpc_security_group_ids = [
-    aws_security_group.team3-db.id     # ID of the security group associated with the cluster (Not provided in the given file)
+    aws_security_group.team3-db.id     # ID of the security group associated with the cluster
   ]
 }
 
 resource "aws_rds_cluster_instance" "cluster_instances" {
-  count              = 1
-  identifier         = "aurora-cluster-demo-${count.index + 1}"
-  cluster_identifier = aws_rds_cluster.default.cluster_identifier
-  instance_class     = "db.r4.large"
-  engine_version     = aws_rds_cluster.default.engine_version
-  engine             = aws_rds_cluster.default.engine
+  count              = 1                                            # Number of instances to create
+  identifier         = "aurora-cluster-demo-${count.index + 1}"     # Identifier for the instance
+  cluster_identifier = aws_rds_cluster.default.cluster_identifier   # Identifier of the associated RDS cluster
+  instance_class     = "db.r4.large"                                # Instance class for the RDS instance
+  engine_version     = aws_rds_cluster.default.engine_version       # Engine version of the associated RDS cluster
+  engine             = aws_rds_cluster.default.engine               # Engine type of the associated RDS cluster
 }
 
 resource "aws_rds_cluster_instance" "cluster_instances_reader1" {
-  count              = 1
-  identifier         = "aurora-cluster-demo-reader1-${count.index + 1}"
-  cluster_identifier = aws_rds_cluster.default.cluster_identifier
-  instance_class     = "db.r4.large"
-  engine_version     = aws_rds_cluster.default.engine_version
-  engine             = aws_rds_cluster.default.engine
+  count              = 1                                                    # Number of instances to create
+  identifier         = "aurora-cluster-demo-reader1-${count.index + 1}"     # Identifier for the instance
+  cluster_identifier = aws_rds_cluster.default.cluster_identifier           # Identifier of the associated RDS cluster
+  instance_class     = "db.r4.large"                                        # Instance class for the RDS instance
+  engine_version     = aws_rds_cluster.default.engine_version               # Engine version of the associated RDS cluster
+  engine             = aws_rds_cluster.default.engine                       # Engine type of the associated RDS cluster
 }
 
 resource "aws_rds_cluster_instance" "cluster_instances_reader2" {
-  count              = 1
-  identifier         = "aurora-cluster-demo-reader2-${count.index + 1}"
-  cluster_identifier = aws_rds_cluster.default.cluster_identifier
-  instance_class     = "db.r4.large"
-  engine_version     = aws_rds_cluster.default.engine_version
-  engine             = aws_rds_cluster.default.engine
+  count              = 1                                                    # Number of instances to create
+  identifier         = "aurora-cluster-demo-reader2-${count.index + 1}"     # Identifier for the instance
+  cluster_identifier = aws_rds_cluster.default.cluster_identifier           # Identifier of the associated RDS cluster
+  instance_class     = "db.r4.large"                                        # Instance class for the RDS instance
+  engine_version     = aws_rds_cluster.default.engine_version               # Engine version of the associated RDS cluster
+  engine             = aws_rds_cluster.default.engine                       # Engine type of the associated RDS cluster
 }
 
 resource "aws_rds_cluster_instance" "cluster_instances_reader3" {
-  count              = 1
-  identifier         = "aurora-cluster-demo-reader3-${count.index + 1}"
-  cluster_identifier = aws_rds_cluster.default.cluster_identifier
-  instance_class     = "db.r4.large"
-  engine_version     = aws_rds_cluster.default.engine_version
-  engine             = aws_rds_cluster.default.engine
+  count              = 1                                                    # Number of instances to create
+  identifier         = "aurora-cluster-demo-reader3-${count.index + 1}"     # Identifier for the instance
+  cluster_identifier = aws_rds_cluster.default.cluster_identifier           # Identifier of the associated RDS cluster
+  instance_class     = "db.r4.large"                                        # Instance class for the RDS instance
+  engine_version     = aws_rds_cluster.default.engine_version               # Engine version of the associated RDS cluster
+  engine             = aws_rds_cluster.default.engine                       # Engine type of the associated RDS cluster
 }
 
 output "reader_endpoint" {
-  value = aws_rds_cluster.default.reader_endpoint
+  value = aws_rds_cluster.default.reader_endpoint        # Output the reader endpoint of the RDS cluster
 }
 
 output "writer_endpoint" {
-  value = aws_rds_cluster.default.endpoint
+  value = aws_rds_cluster.default.endpoint               # Output the writer endpoint of the RDS cluster
 }
